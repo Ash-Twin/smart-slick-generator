@@ -12,5 +12,6 @@ object TypeMapping {
       "Timestamp"
     } else if (sqlType.startsWith("DECIMAL")) "BigDecimal"
     else if( sqlType.endsWith("INT")) "Int"
+    else if(sqlType.endsWith("TEXT")) "String"
     else sqlType
 }
