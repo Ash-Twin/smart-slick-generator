@@ -12,4 +12,4 @@
 1. v0.2 will support table with more than 22 columns
 2. v0.3 will support tables traversal generate
 
-check if signed 对 xxx
+check if signed 对 xxxx
