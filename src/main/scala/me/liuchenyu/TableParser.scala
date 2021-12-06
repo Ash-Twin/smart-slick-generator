@@ -41,7 +41,7 @@ case class TableParser(table: Table, convert: String => String = str => str) {
 
 
   def classTableBuilder: String = {
-    val classTableHead = s"class $tableName(tag: Tag)\n    extends Table[$tableName](tag, Some(\"\"), $tableName.tableName) {\n"
+    val classTableHead = s"class $tableName(tag: Tag)\n    extends Table[${table.id().toString}](tag, Some(\"\"), $tableName.tableName) {\n"
     val slickColumns = slickColumnBuilder(table.columns())
     val provenShape = provenShapeBuilder
     val classTableTail = "\n}"
@@ -52,9 +52,9 @@ case class TableParser(table: Table, convert: String => String = str => str) {
     columns.forEach{
       column=>
         val columnType = wrapType(column)
-        columnStr.addOne(s"\tval ${convert(column.name())}: Rep[$columnType] = column[$columnType](\"${column.name()}\")")
+        columnStr.addOne(s"\tdef ${convert(column.name())}: Rep[$columnType] = column[$columnType](\"${column.name()}\")")
     }
-    columnStr.mkString(",\n")
+    columnStr.mkString("\n")
   }
   def provenShapeBuilder: String = {
     val keys = for (elem <- table.columns().asScala) yield s"\t\t${convert(elem.name())}"
