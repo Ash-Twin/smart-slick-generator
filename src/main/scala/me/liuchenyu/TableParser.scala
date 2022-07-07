@@ -10,8 +10,8 @@ import scala.jdk.CollectionConverters.CollectionHasAsScala
 case class TableParser(table: Table, convert: String => String = str => str) {
   def underscoreToCamel(name: String) = "_([a-z\\d])".r.replaceAllIn(name, {m =>
     m.group(1).toUpperCase()
-  }).capitalize
-    val tableName: String = underscoreToCamel( tableName.split("\\.").last)
+  })
+    val tableName: String = underscoreToCamel(table.id.toString.split("\\.").last).capitalize
     val schema:String = {
       val strings = tableName.split("\\.")
       if(strings.length==2){

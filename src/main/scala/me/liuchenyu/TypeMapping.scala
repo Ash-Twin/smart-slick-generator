@@ -13,6 +13,7 @@ object TypeMapping {
     } else if (sqlType.startsWith("DECIMAL")) wrapNullable("BigDecimal", nullable)
     else if (sqlType.endsWith("INT")) wrapNullable("Int", nullable)
     else if (sqlType.endsWith("TEXT")) wrapNullable("String", nullable)
+    else if (sqlType.startsWith("DATE")) wrapNullable("Date",nullable)
     else wrapNullable(sqlType, nullable)
 
   def wrapNullable(str: String, nullable: Boolean): String =
