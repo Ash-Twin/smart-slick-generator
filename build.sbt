@@ -7,5 +7,6 @@ scalaVersion := "2.13.6"
 val proj = (project in file("."))
   .enablePlugins(JavaAppPackaging)
   .settings(
-    libraryDependencies += "io.debezium" % "debezium-connector-mysql" % "1.6.2.Final"
+    // https://mvnrepository.com/artifact/io.debezium/debezium-connector-mysql
+    libraryDependencies += "io.debezium" % "debezium-connector-mysql" % "1.9.4.Final"
   )
